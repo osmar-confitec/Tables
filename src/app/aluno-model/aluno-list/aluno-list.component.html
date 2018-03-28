@@ -1,17 +1,27 @@
- 
-
-              <tables-datatables
+              <!--  ajax: 'assets/tables/datatables.standard.json', -->
               
+              <tables-datatables
+
+                [detailsFormat]="detailsFormat"
                 [options]="{
-                  ajax: 'assets/tables/datatables.standard.json',
+                 
                 columns: [
+                {
+                  class: 'details-control',
+                  orderable: false,
+                  data: null,
+                  defaultContent: ''
+                },
                 {data: 'id'},
                 {data: 'name'},
                 {data: 'phone'},
                 {data: 'company'},
                 {data: 'zip'},
                 {data: 'city'},
-                {data: 'date'}
+                {data: 'date'},
+                {data: 'tipo1'},
+                {data: 'tipo2'},
+                {data: 'tipo3'}
                 ],
                 buttons: [
                 'copy', 'excel', 'pdf', 'print'
@@ -21,6 +31,7 @@
               >
                 <thead>
                 <tr>
+                  <th></th>
                   <th data-hide="mobile-p">ID</th>
                   <th data-class="expand">Name</th>
                   <th>Phone</th>
@@ -28,8 +39,29 @@
                   <th data-hide="mobile-p,tablet-p">Zip</th>
                   <th data-hide="mobile-p,tablet-p">City</th>
                   <th data-hide="mobile-p,tablet-p">Date</th>
+
+                  <th  style="display:none" data-hide="mobile-p,tablet-p">tipo1</th>
+                  <th style="display:none"  data-hide="mobile-p,tablet-p">tipo2</th>
+                  <th style="display:none"  data-hide="mobile-p,tablet-p">tipo3</th>
+
                 </tr>
                 </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>System Architect</td>
+                        <td>Edinburgh</td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>$320,800</td>
+                        <td>2011/04/25</td>
+                        <td>$320,800</td>
+
+                        <td style="display:none" >tipo1</td>
+                        <td style="display:none" >  tipo2</td>
+                        <td style="display:none" >tipo3</td>
+                    </tr>
+                   </tbody> 
               </tables-datatables>
 
      

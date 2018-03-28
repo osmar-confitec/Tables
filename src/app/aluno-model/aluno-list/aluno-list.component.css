@@ -1,0 +1,8 @@
+td.details-control {
+    background: url('/assets/img/more.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('/assets/minus.png') no-repeat center center;
+}
