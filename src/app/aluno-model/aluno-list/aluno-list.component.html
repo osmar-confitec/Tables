@@ -6,22 +6,15 @@
                 [options]="{
                  
                 columns: [
-                {
-                  class: 'details-control',
-                  orderable: false,
-                  data: null,
-                  defaultContent: ''
-                },
-                {data: 'id'},
-                {data: 'name'},
-                {data: 'phone'},
-                {data: 'company'},
-                {data: 'zip'},
-                {data: 'city'},
-                {data: 'date'},
-                {data: 'tipo1'},
-                {data: 'tipo2'},
-                {data: 'tipo3'}
+               
+                {data: 'nome'},
+                {data: 'endereco'},
+                {data: 'datanascimento'},
+                {data: 'bairro'},
+                {data: 'cpf'},
+                {data: 'segurovida'},
+                {data: 'dadosociais'},
+                {data: 'nomeseguradora'}
                 ],
                 buttons: [
                 'copy', 'excel', 'pdf', 'print'
@@ -31,35 +24,30 @@
               >
                 <thead>
                 <tr>
-                  <th></th>
-                  <th data-hide="mobile-p">ID</th>
-                  <th data-class="expand">Name</th>
-                  <th>Phone</th>
-                  <th data-hide="mobile-p">Company</th>
-                  <th data-hide="mobile-p,tablet-p">Zip</th>
-                  <th data-hide="mobile-p,tablet-p">City</th>
-                  <th data-hide="mobile-p,tablet-p">Date</th>
+                  
+                  <th data-hide="mobile-p">Nome</th>
+                  <th data-class="expand">Endereco</th>
+                  <th>Data Nascimento</th>
+                  <th data-hide="mobile-p">Bairro</th>
+                  <th data-hide="mobile-p,tablet-p">CPF</th>
 
-                  <th  style="display:none" data-hide="mobile-p,tablet-p">tipo1</th>
-                  <th style="display:none"  data-hide="mobile-p,tablet-p">tipo2</th>
-                  <th style="display:none"  data-hide="mobile-p,tablet-p">tipo3</th>
+                  <th  data-hide="mobile-p,tablet-p">Seguro Vida</th>
+                  <th   data-hide="mobile-p,tablet-p">Dados Sociais</th>
+                  <th   data-hide="mobile-p,tablet-p">Nomes Seguradora</th>
 
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-
-                        <td style="display:none" >tipo1</td>
-                        <td style="display:none" >  tipo2</td>
-                        <td style="display:none" >tipo3</td>
+                    <tr *ngFor="let aluno of alunos"  >
+                       
+                       <td> {{aluno.nome}} </td>
+                       <td> {{aluno.endereco}} </td>
+                       <td> {{aluno.dataNascimento | date:'dd/MM/yyyy'}} </td>
+                       <td> {{aluno.bairro}} </td>
+                       <td> {{aluno.cpf}} </td>
+                       <td> {{aluno.seguroVida}} </td>
+                       <td> {{aluno.dadosSociais}} </td>
+                       <td> {{aluno.nomeSeguradora}} </td>
                     </tr>
                    </tbody> 
               </tables-datatables>

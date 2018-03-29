@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, AfterContentInit, OnInit } from '@angular/core';
+import { Component, Input, ElementRef, AfterContentInit, OnInit, AfterViewInit  } from '@angular/core';
 
 
 
@@ -11,8 +11,11 @@ import 'datatables.net'
   templateUrl: './datatables.component.html',
   styleUrls: ['./datatables.component.css']
 })
-export class DatatablesComponent implements OnInit {
+export class DatatablesComponent implements OnInit , AfterViewInit  {
 
+  ngAfterViewInit(): void {
+    this.render();
+  }
   @Input() public options: any;
   @Input() public filter: any;
   @Input() public detailsFormat: any;
@@ -45,11 +48,12 @@ export class DatatablesComponent implements OnInit {
     });
   }
 
+
   ngOnInit() {
 
 
     // this.buttonClicked();
-    this.render();
+    //this.render();
     /*   Promise.all([
         System.import('script-loader!smartadmin-plugins/datatables/datatables.min.js'),
       ]).then(()=>{
