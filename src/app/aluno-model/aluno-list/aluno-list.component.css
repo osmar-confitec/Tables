@@ -4,5 +4,5 @@ td.details-control {
 }
 
 tr.shown td.details-control {
-    background: url('/assets/minus.png') no-repeat center center;
+    background: url('/assets/img/minus.png') no-repeat center center;
 }

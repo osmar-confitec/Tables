@@ -6,7 +6,12 @@
                 [options]="{
                  
                 columns: [
-               
+                {
+                  className:      'details-control',
+                  orderable:      false,
+                  data:           null,
+                  defaultContent: ''
+                },
                 {data: 'nome'},
                 {data: 'endereco'},
                 {data: 'datanascimento'},
@@ -24,32 +29,36 @@
               >
                 <thead>
                 <tr>
-                  
+                  <th></th>
                   <th data-hide="mobile-p">Nome</th>
                   <th data-class="expand">Endereco</th>
                   <th>Data Nascimento</th>
                   <th data-hide="mobile-p">Bairro</th>
                   <th data-hide="mobile-p,tablet-p">CPF</th>
 
-                  <th  data-hide="mobile-p,tablet-p">Seguro Vida</th>
-                  <th   data-hide="mobile-p,tablet-p">Dados Sociais</th>
-                  <th   data-hide="mobile-p,tablet-p">Nomes Seguradora</th>
+                  <th  style="display:none"  data-hide="mobile-p,tablet-p">Seguro Vida</th>
+                  <th  style="display:none"  data-hide="mobile-p,tablet-p">Dados Sociais</th>
+                  <th  style="display:none" data-hide="mobile-p,tablet-p">Nomes Seguradora</th>
 
                 </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let aluno of alunos"  >
-                       
+                       <td></td>
                        <td> {{aluno.nome}} </td>
                        <td> {{aluno.endereco}} </td>
                        <td> {{aluno.dataNascimento | date:'dd/MM/yyyy'}} </td>
                        <td> {{aluno.bairro}} </td>
                        <td> {{aluno.cpf}} </td>
-                       <td> {{aluno.seguroVida}} </td>
-                       <td> {{aluno.dadosSociais}} </td>
-                       <td> {{aluno.nomeSeguradora}} </td>
+
+
+                       <td style="display:none" > {{aluno.seguroVida}} </td>
+                       <td style="display:none" > {{aluno.dadosSociais}} </td>
+                       <td style="display:none" > {{aluno.nomeSeguradora}} </td>
                     </tr>
                    </tbody> 
               </tables-datatables>
+              <hr>
+              <input type="checkbox" #checkBox (change)="checado(checkBox.value)" name="checado" id="checado">
 
      
