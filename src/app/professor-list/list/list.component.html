@@ -1,0 +1,19 @@
+
+
+<tables-datatables #tabela [options]="{ columns: [{data: 'nome'},{data: 'sobrenome'}], buttons: ['copy', 'excel', 'pdf', 'print']}"  tableClass="table table-striped table-bordered table-hover" >
+<thead>
+<tr>
+  
+  <th data-hide="mobile-p">Nome</th>
+  <th data-class="expand">Sobrenome</th>
+ 
+
+</tr>
+</thead>
+<tbody>
+    <tr *ngFor="let professor of listProfessorVm"  >
+       <td> {{professor.nomeProfessor}} </td>
+       <td> {{professor.sobrenomeProfessor}} </td>
+    </tr>
+   </tbody> 
+</tables-datatables>

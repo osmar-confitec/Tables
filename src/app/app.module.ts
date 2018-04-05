@@ -6,6 +6,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao
 import { routing } from './app.routing';
 import { AlunoModelModule } from './aluno-model/aluno-model.module';
 import { ClienteModelChildrenModule } from './cliente-model-children/cliente-model-children.module';
+import { ProfessorListModule } from './professor-list/professor-list.module';
 
 
 
@@ -20,7 +21,8 @@ import { ClienteModelChildrenModule } from './cliente-model-children/cliente-mod
     BrowserModule,
     routing,
     AlunoModelModule,
-    ClienteModelChildrenModule
+    ClienteModelChildrenModule,
+    ProfessorListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./aluno-list.component.css']
 })
 export class AlunoListComponent implements OnInit {
+
+    
     checar:boolean  = false;
     alunos: AlunoVm[] = [
         {

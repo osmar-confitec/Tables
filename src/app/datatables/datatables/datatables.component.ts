@@ -1,9 +1,9 @@
 import { Component, Input, ElementRef, AfterContentInit, OnInit, AfterViewInit  } from '@angular/core';
 
-
-
 import * as $ from 'jquery';
 import 'datatables.net'
+
+
 
 
 @Component({
@@ -12,6 +12,14 @@ import 'datatables.net'
   styleUrls: ['./datatables.component.css']
 })
 export class DatatablesComponent implements OnInit , AfterViewInit  {
+
+  public reInitDatatable(): void {
+    if (this.tabela) {
+      this.tabela.destroy()
+      this.tabela=null
+    }
+    setTimeout(() => this.render(),10)
+  }
 
   ngAfterViewInit(): void {
     this.render();
@@ -24,6 +32,8 @@ export class DatatablesComponent implements OnInit , AfterViewInit  {
   @Input() public columnsHide: boolean;
   @Input() public tableClass: string;
   @Input() public width: string = '100%';
+
+  tabela:any;
 
   constructor(private el: ElementRef) {
   }
@@ -62,7 +72,7 @@ export class DatatablesComponent implements OnInit , AfterViewInit  {
       }) */
   }
 
-  render() {
+  public render() {
     let element: any = $(this.el.nativeElement.children[0]);
     let options = this.options || {}
 
@@ -102,12 +112,12 @@ export class DatatablesComponent implements OnInit , AfterViewInit  {
       }
     });
 
-    const _dataTable = element.DataTable(options);
+     this.tabela = element.DataTable(options);
 
     if (this.filter) {
       // Apply the filter
       element.on('keyup change', 'thead th input[type=text]', function () {
-        _dataTable
+        this.tabela
           .column($(this).parent().index() + ':visible')
           .search(this.value)
           .draw();
@@ -124,7 +134,7 @@ export class DatatablesComponent implements OnInit , AfterViewInit  {
       let format = this.detailsFormat
       element.on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
-        var row = _dataTable.row(tr);
+        var row = this.tabela.row(tr);
         if (row.child.isShown()) {
           row.child.hide();
           tr.removeClass('shown');
