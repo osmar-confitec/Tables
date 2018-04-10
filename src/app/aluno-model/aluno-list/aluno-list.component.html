@@ -1,30 +1,9 @@
               <!--  ajax: 'assets/tables/datatables.standard.json', -->
-              
+              <input type="button" (click)="AddAluno()" value="Adicionar Aluno">
               <tables-datatables
                 #tabela
                 [detailsFormat]="detailsFormat"
-                [options]="{
-                 
-                columns: [
-                {
-                  className:      'details-control',
-                  orderable:      false,
-                  data:           null,
-                  defaultContent: ''
-                },
-                {data: 'nome'},
-                {data: 'endereco'},
-                {data: 'datanascimento'},
-                {data: 'bairro'},
-                {data: 'cpf'},
-                {data: 'segurovida'},
-                {data: 'dadosociais'},
-                {data: 'nomeseguradora'}
-                ],
-                buttons: [
-                'copy', 'excel', 'pdf', 'print'
-                ]
-                }"
+                [options]="columnsList"
                 tableClass="table table-striped table-bordered table-hover"
               >
                 <thead>
@@ -36,9 +15,9 @@
                   <th data-hide="mobile-p">Bairro</th>
                   <th data-hide="mobile-p,tablet-p">CPF</th>
 
-                  <th  style="display:none"  data-hide="mobile-p,tablet-p">Seguro Vida</th>
-                  <th  style="display:none"  data-hide="mobile-p,tablet-p">Dados Sociais</th>
-                  <th  style="display:none" data-hide="mobile-p,tablet-p">Nomes Seguradora</th>
+                  <th  data-hide="mobile-p,tablet-p">Seguro Vida</th>
+                  <th  data-hide="mobile-p,tablet-p">Dados Sociais</th>
+                  <th  data-hide="mobile-p,tablet-p">Nomes Seguradora</th>
 
                 </tr>
                 </thead>
@@ -52,9 +31,9 @@
                        <td> {{aluno.cpf}} </td>
 
 
-                       <td style="display:none" > {{aluno.seguroVida}} </td>
-                       <td style="display:none" > {{aluno.dadosSociais}} </td>
-                       <td style="display:none" > {{aluno.nomeSeguradora}} </td>
+                       <td  > {{aluno.seguroVida}} </td>
+                       <td  > {{aluno.dadosSociais}} </td>
+                       <td  > {{aluno.nomeSeguradora}} </td>
                     </tr>
                    </tbody> 
               </tables-datatables>

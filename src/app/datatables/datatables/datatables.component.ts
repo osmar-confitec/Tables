@@ -13,16 +13,23 @@ import 'datatables.net'
 })
 export class DatatablesComponent implements OnInit , AfterViewInit  {
 
-  public reInitDatatable(): void {
+
+  public hideShowColumn(posColumn:number){
+    var column = this.tabela.column( posColumn );
+    // Toggle the visibility
+    column.visible( ! column.visible() );
+  }
+
+  public reInitDatatable(funcReturn): void {
     if (this.tabela) {
       this.tabela.destroy()
       this.tabela=null
     }
-    setTimeout(() => this.render(),10)
+    setTimeout(() => { this.render(funcReturn);   } ,12)
   }
 
   ngAfterViewInit(): void {
-    this.render();
+    this.render(undefined);
   }
   @Input() public options: any;
   @Input() public filter: any;
@@ -72,7 +79,7 @@ export class DatatablesComponent implements OnInit , AfterViewInit  {
       }) */
   }
 
-  public render() {
+  public render(funcAfterRender) {
     let element: any = $(this.el.nativeElement.children[0]);
     let options = this.options || {}
 
@@ -113,11 +120,12 @@ export class DatatablesComponent implements OnInit , AfterViewInit  {
     });
 
      this.tabela = element.DataTable(options);
+     let Tab =this.tabela; 
 
     if (this.filter) {
       // Apply the filter
       element.on('keyup change', 'thead th input[type=text]', function () {
-        this.tabela
+        Tab
           .column($(this).parent().index() + ':visible')
           .search(this.value)
           .draw();
@@ -132,9 +140,11 @@ export class DatatablesComponent implements OnInit , AfterViewInit  {
 
     if (this.detailsFormat) {
       let format = this.detailsFormat
+      element.prop('onclick',null).off('click');
+      $(element).find('tbody tr').removeClass('shown');
       element.on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
-        var row = this.tabela.row(tr);
+        var row = Tab.row(tr);
         if (row.child.isShown()) {
           row.child.hide();
           tr.removeClass('shown');
@@ -145,6 +155,9 @@ export class DatatablesComponent implements OnInit , AfterViewInit  {
         }
       })
     }
+
+     if (funcAfterRender!== undefined)
+     funcAfterRender();
   }
 
 }

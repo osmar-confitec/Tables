@@ -8,4 +8,5 @@ export class AlunoVm {
     public seguroVida:string;
     public dadosSociais:string;
     public nomeSeguradora:string
+    public alunoAtualizado:boolean;
 }
