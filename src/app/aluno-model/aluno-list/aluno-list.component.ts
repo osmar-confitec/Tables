@@ -9,10 +9,9 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, OnChang
 })
 export class AlunoListComponent implements OnInit,
 
-AfterViewChecked,
-OnDestroy,
-AfterViewInit ,  OnInit , OnChanges , DoCheck , AfterContentInit , AfterContentChecked
-{
+    AfterViewChecked,
+    OnDestroy,
+    AfterViewInit, OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked {
     ngAfterViewInit(): void {
         console.log(` AfterViewInit `)
     }
@@ -20,31 +19,28 @@ AfterViewInit ,  OnInit , OnChanges , DoCheck , AfterContentInit , AfterContentC
 
     ngOnDestroy(): void {
         console.log(` ngOnDestroy `)
-      }
-      ngAfterViewChecked(): void {
+    }
+    ngAfterViewChecked(): void {
         console.log(` ngAfterViewChecked `)
-      }
-      ngAfterContentChecked(): void {
+    }
+    ngAfterContentChecked(): void {
         console.log(` ngAfterContentChecked `)
-      }
-      ngAfterContentInit(): void {
+    }
+    ngAfterContentInit(): void {
         console.log(` AfterContentInit `)
-      }
-      ngDoCheck(): void {
+    }
+    ngDoCheck(): void {
         console.log(` ngDoCheck `)
-      }
-      ngOnChanges(changes: SimpleChanges): void {
-       
-        console.log(` Onchanges ${ console.dir(changes)} `)
-    
-      }
+    }
+    ngOnChanges(changes: SimpleChanges): void {
+
+        console.log(` Onchanges ${console.dir(changes)} `)
+
+    }
     columnsList = {};
 
     AddAluno() {
-
-
-
-         this.lista.reInitDatatable( function(){   this.lista.hideShowColumn(1); } );
+        this.lista.reInitDatatableChange();
         this.alunos.push({
             nome: ` Osmar Goncalves Vieira `
             , endereco: ` Rua joão de carvalho nº 36 `
@@ -54,9 +50,13 @@ AfterViewInit ,  OnInit , OnChanges , DoCheck , AfterContentInit , AfterContentC
             , seguroVida: ` Sulamérica `
             , dadosSociais: ` 10102530 `
             , nomeSeguradora: `Mapfree`
-            ,alunoAtualizado : false
-        }); 
-     setTimeout(() => {  this.lista.hideShowColumn(1);  } ,12)
+            , alunoAtualizado: false
+        });
+        let render = this.lista;
+        this.lista.promessa().then(function (value) {
+            render.render();
+            render.hideShowColumn(1);
+        });
     }
 
     checar: boolean = false;
@@ -70,7 +70,7 @@ AfterViewInit ,  OnInit , OnChanges , DoCheck , AfterContentInit , AfterContentC
             , seguroVida: ` Sulamérica `
             , dadosSociais: ` 10102530 `
             , nomeSeguradora: `Mapfree`
-            ,alunoAtualizado : false
+            , alunoAtualizado: false
         },
         {
             nome: ` Osmar Goncalves Vieira `
@@ -81,7 +81,7 @@ AfterViewInit ,  OnInit , OnChanges , DoCheck , AfterContentInit , AfterContentC
             , seguroVida: ` Sulamérica `
             , dadosSociais: ` 10102530 `
             , nomeSeguradora: `Mapfree`
-            ,alunoAtualizado : false
+            , alunoAtualizado: false
         },
         {
             nome: ` José silva neto `
@@ -92,7 +92,7 @@ AfterViewInit ,  OnInit , OnChanges , DoCheck , AfterContentInit , AfterContentC
             , seguroVida: ` Sulamérica `
             , dadosSociais: ` 10102530 `
             , nomeSeguradora: `Mapfree`
-            ,alunoAtualizado : false
+            , alunoAtualizado: false
         },
         {
             nome: ` Feliciano dos Santos vieira `
@@ -103,7 +103,7 @@ AfterViewInit ,  OnInit , OnChanges , DoCheck , AfterContentInit , AfterContentC
             , seguroVida: ` Sulamérica `
             , dadosSociais: ` 10102530 `
             , nomeSeguradora: `Mapfree`
-            ,alunoAtualizado : false
+            , alunoAtualizado: false
         },
         {
             nome: ` Cremilda `
@@ -114,7 +114,7 @@ AfterViewInit ,  OnInit , OnChanges , DoCheck , AfterContentInit , AfterContentC
             , seguroVida: ` Sulamérica `
             , dadosSociais: ` 10102530 `
             , nomeSeguradora: `Mapfree`
-            ,alunoAtualizado : false
+            , alunoAtualizado: false
         },
         {
             nome: ` Osmar Goncalves Vieira `
@@ -125,7 +125,7 @@ AfterViewInit ,  OnInit , OnChanges , DoCheck , AfterContentInit , AfterContentC
             , seguroVida: ` Sulamérica `
             , dadosSociais: ` 10102530 `
             , nomeSeguradora: `Mapfree`
-            ,alunoAtualizado : false
+            , alunoAtualizado: false
         },
         {
             nome: ` Osmar Goncalves Vieira `
@@ -136,7 +136,7 @@ AfterViewInit ,  OnInit , OnChanges , DoCheck , AfterContentInit , AfterContentC
             , seguroVida: ` Sulamérica `
             , dadosSociais: ` 10102530 `
             , nomeSeguradora: `Mapfree`
-            ,alunoAtualizado : false
+            , alunoAtualizado: false
         },
         {
             nome: ` Osmar Goncalves Vieira `
@@ -147,7 +147,7 @@ AfterViewInit ,  OnInit , OnChanges , DoCheck , AfterContentInit , AfterContentC
             , seguroVida: ` Sulamérica `
             , dadosSociais: ` 10102530 `
             , nomeSeguradora: `Mapfree`
-            ,alunoAtualizado : false
+            , alunoAtualizado: false
         },
         {
             nome: ` Osmar Goncalves Vieira `
@@ -158,7 +158,7 @@ AfterViewInit ,  OnInit , OnChanges , DoCheck , AfterContentInit , AfterContentC
             , seguroVida: ` Sulamérica `
             , dadosSociais: ` 10102530 `
             , nomeSeguradora: `Mapfree`
-            ,alunoAtualizado : false
+            , alunoAtualizado: false
         }
     ];
     public detailsFormat(d) {
@@ -204,9 +204,9 @@ AfterViewInit ,  OnInit , OnChanges , DoCheck , AfterContentInit , AfterContentC
                 { data: 'datanascimento' },
                 { data: 'bairro' },
                 { data: 'cpf' },
-                { data: 'segurovida' , "visible": false },
-                { data: 'dadosociais' , "visible": false },
-                { data: 'nomeseguradora' , "visible": false }
+                { data: 'segurovida', "visible": false },
+                { data: 'dadosociais', "visible": false },
+                { data: 'nomeseguradora', "visible": false }
             ],
             buttons: [
                 'copy', 'excel', 'pdf', 'print'

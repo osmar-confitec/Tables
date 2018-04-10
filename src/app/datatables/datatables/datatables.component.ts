@@ -20,6 +20,20 @@ export class DatatablesComponent implements OnInit , AfterViewInit  {
     column.visible( ! column.visible() );
   }
 
+  promessa():Promise<{}>{
+    return new Promise((resolve,reject)=>{
+        window.setTimeout(resolve.bind(null, 10), 10);
+    })
+}
+
+public reInitDatatableChange(): void {
+        if (this.tabela) {
+          this.tabela.destroy()
+          this.tabela=null
+        }
+  
+}
+
   public reInitDatatable(funcReturn): void {
     if (this.tabela) {
       this.tabela.destroy()
